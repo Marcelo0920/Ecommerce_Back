@@ -28,7 +28,7 @@ router
   .put(isAuthenticated, isAdmin, updateProduct)
   .delete(isAuthenticated, isAdmin, deleteProduct);
 
-router.post("/new", isAuthenticated, isAdmin, singleUpload, createProduct);
+router.post("/new", singleUpload, createProduct);
 
 router
   .route("/images/:id")

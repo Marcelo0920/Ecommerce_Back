@@ -14,6 +14,13 @@ export const sendToken = (user, res, message, statusCode) => {
     .json({
       success: true,
       message: message,
+      user: {
+        name: user.name,
+        email: user.email,
+        city: user.city,
+        address: user.address,
+        country: user.country,
+      },
     });
 };
 

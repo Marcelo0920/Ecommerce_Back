@@ -8,6 +8,7 @@ import cloudinary from "cloudinary";
 export const getAllProducts = asyncError(async (req, res, next) => {
   //Searcg & Category query
 
+  console.log("por acaaaa");
   const { keyword, category } = req.query;
 
   const products = await Product.find({
@@ -17,6 +18,8 @@ export const getAllProducts = asyncError(async (req, res, next) => {
     },
     category: category ? category : undefined,
   });
+
+  console.log(products);
 
   res.status(200).json({
     success: true,
@@ -69,6 +72,7 @@ export const createProduct = asyncError(async (req, res, next) => {
     public_id: myCLoud.public_id,
     url: myCLoud.secure_url,
   };
+  console.log(image);
 
   await Product.create({
     name,
