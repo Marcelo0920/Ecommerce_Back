@@ -67,7 +67,6 @@ export const signup = asyncError(async (req, res, next) => {
 });
 
 export const getMyProfile = asyncError(async (req, res, next) => {
-  console.log(req.user);
   const user = await User.findById(req.user._id);
 
   res.status(200).json({

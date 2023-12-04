@@ -75,7 +75,6 @@ export const createProduct = asyncError(async (req, res, next) => {
     public_id: myCLoud.public_id,
     url: myCLoud.secure_url,
   };
-  console.log(image);
 
   await Product.create({
     name,

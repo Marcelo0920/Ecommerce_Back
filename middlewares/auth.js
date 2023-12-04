@@ -6,8 +6,6 @@ import { asyncError } from "./error.js";
 export const isAuthenticated = asyncError(async (req, res, next) => {
   //const token = req.cookies.token
 
-  console.log(req.cookies);
-
   const { token } =
     req.cookies ||
     req.body.token ||
@@ -19,8 +17,6 @@ export const isAuthenticated = asyncError(async (req, res, next) => {
   }
 
   const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-
-  console.log(decodedData);
 
   req.user = await User.findById(decodedData._id);
   next();
