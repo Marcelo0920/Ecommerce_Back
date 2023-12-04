@@ -16,7 +16,7 @@ export const getAllProducts = asyncError(async (req, res, next) => {
       $regex: keyword ? keyword : "",
       $options: "i",
     },
-    category: category ? category : undefined,
+    category: category ? category : "",
   });
 
   console.log(products);
