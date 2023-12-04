@@ -8,16 +8,19 @@ import cloudinary from "cloudinary";
 export const getAllProducts = asyncError(async (req, res, next) => {
   //Searcg & Category query
 
-  console.log("por acaaaa");
   const { keyword, category } = req.query;
 
-  const products = await Product.find({
-    name: {
-      $regex: keyword ? keyword : "",
+  if (keyword) {
+    conditions.name = {
+      $regex: keyword,
       $options: "i",
-    },
-    category: category ? category : "",
-  });
+    };
+  }
+  if (category) {
+    conditions.category = category;
+  }
+
+  const products = await Product.find(conditions);
 
   console.log(products);
 
