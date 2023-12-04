@@ -10,6 +10,8 @@ export const getAllProducts = asyncError(async (req, res, next) => {
 
   const { keyword, category } = req.query;
 
+  console.log(req.query);
+
   if (keyword) {
     conditions.name = {
       $regex: keyword,
